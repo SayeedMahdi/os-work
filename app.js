@@ -8,7 +8,7 @@ console.log(os.networkInterfaces());
 
 //list all notes
 yargs.command({
-  command: "list",
+  command: "list", 
   describe: "Some notes to show",
   handler:(argv) => {
     pathRecord(argv.some)

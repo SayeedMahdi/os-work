@@ -19,6 +19,8 @@
   "homepage": "https://github.com/SayeedMahdi/os-work#readme",
   "dependencies": {
     "nodemon": "^2.0.16",
+    "postman-request": "^2.88.1-postman.31",
+    "treblle": "^1.2.0",
     "yargs": "^17.5.1"
   }
 }
