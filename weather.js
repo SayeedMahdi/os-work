@@ -17,7 +17,7 @@ geoCode(process.argv[2],(err, {latitude,longitude,   place_name }={}) =>{
     }
     console.log({latitude,longitude,place_name});
     app.get("",(req,res) =>{
-      res.send(`<h3>${result}</h3>`).json(datas);
+      res.send(`<h3>${result}</h3>`);
     })
   })
 })
