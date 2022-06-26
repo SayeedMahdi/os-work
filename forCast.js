@@ -8,7 +8,7 @@ const weather = (latitude,longitude, callback) =>{
         }else if(body.length === 0){
             callback("location not found,Please Try another location!",undefined);
         }
-        callback(undefined,`The current weather temperature is ${body.current.temperature} but it feels like ${body.current.feelslike}`);
+        callback(undefined,`The current weather temperature is ${body.current.temperature} but it feels like ${body.current.feelslike} `,body.current);
      
     });
 }

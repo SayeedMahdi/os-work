@@ -1,6 +1,7 @@
 const forCast = require("./forCast");
 const geoCode = require("./geoCode");
-
+const express = require("express");
+const app = express();
 const arv=process.argv[2];
 
 if(!arv){
@@ -10,12 +11,15 @@ geoCode(process.argv[2],(err, {latitude,longitude,   place_name }={}) =>{
   if(err){
     console.log(err);
   }
-  forCast( longitude,latitude,(error,result) => {
+  forCast( longitude,latitude,(error,result,datas) => {
     if(error){
       console.log(error);
     }
     console.log({latitude,longitude,place_name});
-    console.log(result);
+    app.get("",(req,res) =>{
+      res.send(`<h3>${result}</h3>`).json(datas);
+    })
   })
 })
-}
+};
+app.listen(3000,console.log("we are connected to port 3000"))

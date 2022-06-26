@@ -23,15 +23,18 @@ var addTwoNumbers = function(l1, l2) {
    l2.reverse();
    var result1=0;
    var result2=0;
-   l1.forEach(element => {
-     result1 +=element; 
-   });
-   l2.forEach(element => {
-      result2 +=element;
-     
-   });
+  
+      var result1 = l1.join('');
+   console.log(result1);
+   var result2 = l2.join('');
+   console.log(result2);
    
-   const result=result1+result2;
-   
+   const result=parseInt( result1)+parseInt( result2);
+   let myFunc = num => Number(num);
+  
+var intArr = Array.from(String(result), myFunc);
+return intArr.reverse();
+
+  
 };
 addTwoNumbers([2,3,4],[1,5,2]);
