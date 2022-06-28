@@ -1,7 +1,7 @@
 // let number1=0;
 //    let number2 = 0;
 // var twoSum = function(nums, target) {
-   
+
 //   for(let i = 0; i <nums.length; i++ ){
 //    for(let j=i+1 ; j<nums.length; j++){
 //    if(nums[i] + nums[j] === target ){
@@ -17,24 +17,37 @@
 // twoSum([3,2,4],6);
 // console.log(lent);
 
+// var addTwoNumbers = function(l1, l2) {
+//    l1.reverse();
+//    l2.reverse();
+//    var result1=0;
+//    var result2=0;
 
-var addTwoNumbers = function(l1, l2) {
-   l1.reverse();
-   l2.reverse();
-   var result1=0;
-   var result2=0;
-  
-      var result1 = l1.join('');
-   console.log(result1);
-   var result2 = l2.join('');
-   console.log(result2);
-   
-   const result=parseInt( result1)+parseInt( result2);
-   let myFunc = num => Number(num);
-  
-var intArr = Array.from(String(result), myFunc);
-return intArr.reverse();
+//       var result1 = l1.join('');
+//    console.log(result1);
+//    var result2 = l2.join('');
+//    console.log(result2);
 
-  
+//    const result=parseInt( result1)+parseInt( result2);
+//    let myFunc = num => Number(num);
+
+// var intArr = Array.from(String(result), myFunc);
+// return intArr.reverse();
+
+// };
+// addTwoNumbers([2,3,4],[1,5,2]);
+
+var isPalindrome = function (x) {
+  return (
+   parseFloat(
+   x
+       .toString()
+       .split('')
+       .reverse()
+       .join('')
+   ) * Math.sign(x)
+ ) 
+
 };
-addTwoNumbers([2,3,4],[1,5,2]);
+const result = isPalindrome(121345);
+console.log(result);
