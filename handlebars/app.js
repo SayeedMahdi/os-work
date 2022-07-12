@@ -1,19 +1,43 @@
 const express = require("express");
 const app = express();
-app.set("view engine","hbs");
+const path = require("path");
+const hbs = require("hbs");
 
-app.get("/",(req,res) =>{
-    res.render("home",{
-        tittle:"Home page",
-        author:"Sayeed Mahdi Mousavi"
-    })
+const public = path.join(__dirname, "./public");
+const viewPath = path.join(__dirname, "./template/views");
+const partialPath = path.join(__dirname, "./template/Partial");
+//set view engine
+app.set("view engine", "hbs");
+app.set("views", viewPath);
+console.log(partialPath);
+hbs.registerPartials(partialPath); 
+app.use(express.static(public));
+
+app.get("/", (req, res) => {
+  res.render("home", {
+    tittle: "Home page",
+    author: "Sayeed Mahdi Mousavi",
+  });
 });
 
-app.get("/about",(req,res) =>{
-    res.render("about",{
-        tittle:"About app",
-        author:"Sayeed Mahdi Mousavi"
-    })
-})
+app.get("/weather",(req,res) =>{
+  const place = req.query.place;
+  if(!place){
+    return res.send("not set place@!");
+  }
+  res.send(`the place was set to ${place}`);
+});
 
-app.listen(3000,console.log("Some pages to show you in the this port:3000"));
+app.get("/about", (req, res) => {
+  res.render("about", {
+    tittle: "About app",
+    author: "Sayeed Mahdi Mousavi",
+  });
+});
+
+app.get("*", (req,res) =>{
+  res.render("404",{
+    message:"404 There is no such face exist!"
+  })
+})
+app.listen(4000, console.log("Some pages to show you in the this port:4000"));
