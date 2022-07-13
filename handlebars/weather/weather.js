@@ -11,15 +11,11 @@ geoCode(process.argv[2],(err, {latitude,longitude,   place_name }={}) =>{
   if(err){
     console.log(err);
   }
-  forCast( longitude,latitude,(error,result,datas) => {
-    if(error){
-      console.log(error);
-    }
-    console.log({latitude,longitude,place_name});
-    app.get("",(req,res) =>{
+  forCast( longitude,latitude,(err,result) => {
+      app.get("",(req,res) =>{
       res.send(`<h3>${result}</h3>`);
     })
   })
 })
 };
-app.listen(3000,console.log("we are connected to port 3000"))
+app.listen(4000,console.log("we are connected to port 4000"))

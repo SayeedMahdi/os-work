@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const hbs = require("hbs");
+const geoCode = require("./weather/geoCode");
+const forCast = require("./weather/forCast");
+
 
 const public = path.join(__dirname, "./public");
 const viewPath = path.join(__dirname, "./template/views");
@@ -25,7 +28,15 @@ app.get("/weather",(req,res) =>{
   if(!place){
     return res.send("not set place@!");
   }
-  res.send(`the place was set to ${place}`);
+  geoCode(place,(err, {latitude,longitude,   place_name }={}) =>{
+    if(err){
+      console.log(err);
+    }
+    forCast( longitude,latitude,(err,result) => {
+        res.send(`<h3>${result}</h3>`);
+    })
+  })
+  
 });
 
 app.get("/about", (req, res) => {
